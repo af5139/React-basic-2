@@ -22,6 +22,19 @@ function Form(){
         <input onChange={onChange} value={toDo} type="text"/>
         <button>Add To Do</button>
       </form>
+      <hr/>
+      <ul>
+        {/*
+        {toDos.map((item,index)=>(
+          <li key={index}>{item}</li>
+        ))}
+        */}
+        {toDos.map(function(item,index){
+          return(
+          <li key={index}>{item}</li>
+          )
+        })}
+      </ul>
     </div>
   )
 }
