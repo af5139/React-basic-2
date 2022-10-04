@@ -4,6 +4,7 @@ import {useState,useEffect} from "react";
 
 function Detail(){
   const {id} = useParams();
+  const [movie,setMoive] = useState([]);
 
   const getMovies = async () => {
     const json = await (
@@ -11,17 +12,26 @@ function Detail(){
         `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
       )
     ).json();
-    console.log(json)
+      setMoive(json.data.movie);           
   }
 
   useEffect(() => {
     getMovies();
   }, []);
-
+    // console.log(movie.movie);
+    // console.log(movie.movie.background_image);
+    console.log(movie)
   return (
     <div>
     <h1>Detail</h1>
-    <Link to="/">asd</Link>
+    <Link to="/">home</Link>
+    <hr></hr>
+    <ul>
+      <li>
+        {movie.title}
+      </li>
+    </ul>
+    <img src={movie.medium_cover_image} alt="asd"/>
     </div>
   );
 }
